@@ -22,6 +22,9 @@
 				border: 1px solid #ccc;
 				background-color: #f9f9f9;
 			}
+			.left-align {
+				text-align: left;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -55,17 +58,19 @@
 							Sedangkan pemanfaatan CUDA bisa lebih optimal jika digunakan untuk melakukan pengolahan suatu instruksi yang sama untuk banyak data sekaligus.
 							<a href="#" class="image featured"><img src="../images/cpugpu.png" alt=""/></a>
 							Dengan kemampuan tersebut, GPU sangat cocok untuk digunakan melakukan pengolahan data gambar. Pada post ini, akan berfokus pada penggunaan CUDA C++ di Ubuntu berdasarkan pengalaman dari penulis.
-							Seperti biasa, yang pertama perlu dilakukan adalah melakukan instalasi Cuda Toolkit sesuai dengan versi GPU yang kita miliki. Untuk langkah-langkah instalasi dari Cuda toolkit sendiri bisa ditemukan <a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html">di sini</a>
+							Seperti biasa, yang pertama perlu dilakukan adalah melakukan instalasi CUDA Toolkit sesuai dengan versi GPU yang kita miliki. Untuk langkah-langkah instalasi dari CUDA Toolkit sendiri bisa ditemukan <a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html">di sini</a>
 							Setalah menngikuti langkah-langkah di tutorial tersebut kita harus memastikan apakah CUDA Toolkit sudah benar terpasang dengan benar.
                         </p>
-						<div class="notebook-container">
-							<div class="notebook-cells">
-								<h2>Cek apakah proses instalasi sudah berhasil atau belum</h2>
-								<p>nvcc --version</p>
-							</div>
-							<div class="notebook-cells">
-								<h2>Cek apakah CUDA driver sudah berhasil diisntall atau belum</h2>
-								<p>nvidia-smi</p>
+						<div  class="left-align">
+							<div class="notebook-container">
+								<div class="notebook-cells">
+									<p><b>Cek apakah proses instalasi sudah berhasil atau belum</b></p>
+									<p>nvcc --version</p>
+								</div>
+								<div class="notebook-cells">
+									<p><b>Cek apakah CUDA driver sudah berhasil diisntall atau belum</b></p>
+									<p>nvidia-smi</p>
+								</div>
 							</div>
 						</div>
 
