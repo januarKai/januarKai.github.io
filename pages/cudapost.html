@@ -21,6 +21,7 @@
 				padding: 10px;
 				border: 1px solid #ccc;
 				background-color: #f9f9f9;
+				line-height: 2;
 			}
 			.notebook-cells-editor {
 				margin-bottom: 20px;
@@ -104,6 +105,10 @@
 									__global__ void hello &#123; <br>
 									&nbsp;&nbsp;printf("Hello, CUDA\n");<br>
 									&#125;
+									<br>
+									void main() &#123; <br>
+									&nbsp;&nbsp;hello&lt;&lt;&lt;1,1&gt;&gt;&gt;(); <br>
+									&nbsp;&nbsp;cudaDeviceSynchronize();<br>
 								</p>
 							</div>
 						</div>
