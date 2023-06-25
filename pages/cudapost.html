@@ -22,6 +22,13 @@
 				border: 1px solid #ccc;
 				background-color: #f9f9f9;
 			}
+			.notebook-cells-editor {
+				margin-bottom: 20px;
+				padding: 10px;
+				border: 1px solid #ccc;
+				background-color: #f9f9f9;
+				font-family: monospace;
+			}
 			.left-align {
 				text-align: left;
 				line-height: 1;
@@ -89,13 +96,18 @@
 							untuk C++ biasa, hanya saja untuk compiler dari CUDA C++ menggunakan NVCC sebagai compiler. Untuk format file dari CUDA C++ sendiri bisa diidentifikasi dengan format file (.cu). Untuk struktur dari program 
 							CUDA C++ bisa dilihat seperti contoh di bawah ini.
 						</p>
-						<p>
-							<div class="code-editor">
-								#include 
-								int x;
-								int y;
+					</p>
+					<div  class="left-align">
+						<div class="notebook-container">
+							<div class="notebook-cells-editor">
+								<p>#include
+									int x;
+									int y;
+								</p>
 							</div>
-						</p>
+						</div>
+					</div>
+					<p>
 					</header>
 					<footer>
 						<p>Penasaran?</p>
