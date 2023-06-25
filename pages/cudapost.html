@@ -34,7 +34,7 @@
 			.left-align {
 				text-align: left;
 			}
-			.code-editor {
+			.code-editor {font-family: monospace;
 				margin: 0 auto;
 				max-width: calc(100% - 50px);
 				width: 1200px;
@@ -43,6 +43,9 @@
 				font-family: monospace;
 				padding: 10px;
 				white-space: pre;
+			}
+			.code-font {
+				font-family: monospace;
 			}
 		</style>
 	</head>
@@ -95,31 +98,34 @@
 						<p>
 							Untuk yang terbiasa menggunakan C++ di Ubuntu, akan familiar untuk menggunakan GCC/G++ sebagai compiler untuk program yang dibuat. Untuk CUDA C++ sendiri, kurang lebih mirip dengan apa yang perlu dilakukan
 							untuk C++ biasa, hanya saja untuk compiler dari CUDA C++ menggunakan NVCC sebagai compiler. Untuk format file dari CUDA C++ sendiri bisa diidentifikasi dengan format file (.cu). Untuk struktur dari program 
-							CUDA C++ bisa dilihat seperti contoh di bawah ini.
+							CUDA C++ bisa dilihat seperti contoh program 1 file di bawah ini (hello.cu).
 						</p>
-					</p>
-					<div  class="left-align">
-						<div class="notebook-container">
-							<div class="notebook-cells-editor">
-								<p>#include &lt;stdio.h&gt; <br>
-									__global__ void hello &#123; <br>
-									&nbsp;&nbsp;printf("Hello, CUDA\n");<br>
-									&#125;
-									<br>
-									void main() &#123; <br>
-									&nbsp;&nbsp;hello&lt;&lt;&lt;1,1&gt;&gt;&gt;(); <br>
-									&nbsp;&nbsp;cudaDeviceSynchronize();<br>
-									&#125;
-								</p>
+						<div  class="left-align">
+							<div class="notebook-container">
+								<div class="notebook-cells-editor">
+									<p>#include &lt;stdio.h&gt; <br>
+										__global__ void hello &#123; <br>
+										&nbsp;&nbsp;printf("Hello, CUDA\n");<br>
+										&#125;
+										<br>
+										void main() &#123; <br>
+										&nbsp;&nbsp;hello&lt;&lt;&lt;1,1&gt;&gt;&gt;(); <br>
+										&nbsp;&nbsp;cudaDeviceSynchronize();<br>
+										&#125;
+									</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<p>
+						<p>
+							Klip program di atas merupakan contoh sederhana dari struktur program CUDA C++. Program di atas ketika runtime terbagi atas porsi CPU dan porsi GPU.
+							Untuk men-compile program tersebut dilakukan dengan menggunakan command line <div class="code-font">nvcc hello.cu -o hello_cuda</div>. Kemudian untuk
+							menjalankan binary file yang telah di-compile, kurang lebih mirip seperti program C maupun C++ dengan command line <div class="code-font">./hello_cuda</div>.
+						</p>
 					</header>
 					<footer>
 						<p>Penasaran?</p>
 						<a href="#" class="button large scrolly">Tonton di sini</a>
-					</footer>
+					</footer>font-family: monospace;
 				</div>
 			</article>
 
