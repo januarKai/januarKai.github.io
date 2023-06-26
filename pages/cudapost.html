@@ -104,7 +104,7 @@
 							<div class="notebook-container">
 								<div class="notebook-cells-editor">
 									<p>#include &lt;stdio.h&gt; <br>
-										__global__ void hello &#123; <br>
+										__global__ void hello() &#123; <br>
 										&nbsp;&nbsp;printf("Hello, CUDA\n");<br>
 										&#125;
 										<br>
@@ -127,6 +127,12 @@
 									</div>
 								</div>
 							</div>
+						</p>
+						<p>
+							Pada struktur di CUDA C++, sederhananya dapat dibagi menjadi dua bagian, yaitu bagian CPU dan bagian GPU. Pada bagian GPU, adalah sebuah fungsi yang di awali dengan __global__ untuk deklarasi bahwa fungsi ini
+							akan dieksekusi oleh CUDA atau juga biasa disebut CUDA kernel function. Sedangkan pada bagian CPU, fungsi CUDA kernel tersebut dipanggil seperti fungsi C++ biasa namun dengan anotasi khusus yaitu karakter &lt;&lt;&lt;&gt;&gt;&gt;.
+							Untuk fungsi dua angka 1 di dalam karakter khusus tersebut akan lebih lanjut dibahas di bawah. Untuk lebih jelas tentang struktur program C++, bisa memperhatikan gambar di bawah ini:
+							<a href="#" class="image featured"><img src="../images/CUDAprogramstructure.png" alt=""/></a>
 						</p>
 					</header>
 					<footer>
