@@ -12,6 +12,9 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<style>
 			.notebook-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				margin: 0 auto;
 				max-width: calc(100% - 50px);
 				width: 1200px;
@@ -152,6 +155,17 @@
 									<p>
 										__device__ int getGlobalIdx_1D_1D() &#123; <br>
 										&nbsp;&nbsp;return blockIdx.x * blockDim.x + threadIdx.x;<br>
+										&#125;
+									</p>
+								</div>
+								<div class="notebook-cells">
+									<p><b>1D Grid 2D Block</b></p>
+								</div>
+								<div class="notebook-cells-editor">
+									<p>
+										__device__ int getGlobalIdx_1D_2D() &#123; <br>
+										&nbsp;&nbsp;return blockIdx.x * blockDim.x + blockDim.y<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ \threadIdx.y + blockDim.x + threadIdx.x;<br>
 										&#125;
 									</p>
 								</div>
