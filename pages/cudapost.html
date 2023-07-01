@@ -136,13 +136,32 @@
 							Dalam sudut pandang pemrograman, bisa dibilang kalau model pemrograman CUDA ini adalah model pemrograman matriks. Hal ini mungkin didasari karena dalam pemrograman CUDA sendiri mengenal beberapa istilah untuk memodelkan alokasi memori
 							GPU pada GPU dari NVIDIA atau dikenal dengan VRAM, yaitu Grid, Block, dan Thread. Di dalam sebuah Grid dibagi menjadi banyak Block, dan dilam Block, terdapat banyak sekali Thread. Perbedaan anatara Thread dengan Block dan Grid adalah
 							bahwa Thread dieksekusi oleh GPU hampir parallel, akan tetapi Block dan Grid menggunakan konsep concurrency. Dari sisi jumlah, banyak thread dalam sebuah block terbatas jumlahnya, yaitu 1024. Sedangkan dalam sebuah Grid, jumlah Block
-							bisa dibilang hampir tidak terbatas. Oleh karena itu, untuk mengoptimalkan pemrosesan data, strategi penggunaan dari ketiganya sangat penting, dengan orientasi untuk selalu memaksimalkan jumlah Thread di dalamnya.
+							bisa dibilang hampir tidak terbatas. Oleh karena itu, untuk mengoptimalkan pemrosesan data, strategi penggunaan dari ketiganya sangat penting, dengan orientasi untuk selalu memaksimalkan jumlah Thread di dalamnya. Berukut merupakan ilustrasi
+							dari penggunaan dari thread, block, dan grid pada CUDA C++.
+							<a href="#" class="image featured"><img src="../images/threadIndexing.png" alt=""/></a>
+							Pada gambar di atas, pada kotak berwarna merah muda, biru, merah, dan ungu merupakan sebuah block dalam CUDA yang kemudian dari sekumpulan block tersebut disebut grid. Untuk melihat contoh thread indexing, bisa mengacu pada kotak berwarna merah muda.
+							Kemudian, dari ilustrasi tersebut, dapat dibuat rumusan atau pola untuk membuat indexing terhadap data yang akan diproses oleh CUDA nantinya. Di sini saya coba memberi contoh beberapa pola yang kemungkinan bisa digunakan dalam pengolahan data gambar
+							menggunakan CUDA C++ ini.
 						</p>
+						<div  class="left-align">
+							<div class="notebook-container">
+								<div class="notebook-cells">
+									<p><b>1D Grid 1D Block</b></p>
+								</div>
+								<div class="notebook-cells-editor">
+									<p>
+										__device__ int getGlobalIdx_1D_1D() &#123; <br>
+										&nbsp;&nbsp;return blockIdx.x * blockDim.x + threadIdx.x;<br>
+										&#125;
+									</p>
+								</div>
+							</div>
+						</div>
 					</header>
 					<footer>
 						<p>Penasaran?</p>
 						<a href="#" class="button large scrolly">Tonton di sini</a>
-					</footer>font-family: monospace;
+					</footer>
 				</div>
 			</article>
 
