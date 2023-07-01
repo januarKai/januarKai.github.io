@@ -133,6 +133,10 @@
 							akan dieksekusi oleh CUDA atau juga biasa disebut CUDA kernel function. Sedangkan pada bagian CPU, fungsi CUDA kernel tersebut dipanggil seperti fungsi C++ biasa namun dengan anotasi khusus yaitu karakter &lt;&lt;&lt;&gt;&gt;&gt;.
 							Untuk fungsi dua angka 1 di dalam karakter khusus tersebut akan lebih lanjut dibahas di bawah. Untuk lebih jelas tentang struktur program C++, bisa memperhatikan gambar di bawah ini:
 							<a href="#" class="image featured"><img src="../images/CUDAprogramstructure.png" alt=""/></a>
+							Dalam sudut pandang pemrograman, bisa dibilang kalau model pemrograman CUDA ini adalah model pemrograman matriks. Hal ini mungkin didasari karena dalam pemrograman CUDA sendiri mengenal beberapa istilah untuk memodelkan alokasi memori
+							GPU pada GPU dari NVIDIA atau dikenal dengan VRAM, yaitu Grid, Block, dan Thread. Di dalam sebuah Grid dibagi menjadi banyak Block, dan dilam Block, terdapat banyak sekali Thread. Perbedaan anatara Thread dengan Block dan Grid adalah
+							bahwa Thread dieksekusi oleh GPU hampir parallel, akan tetapi Block dan Grid menggunakan konsep concurrency. Dari sisi jumlah, banyak thread dalam sebuah block terbatas jumlahnya, yaitu 1024. Sedangkan dalam sebuah Grid, jumlah Block
+							bisa dibilang hampir tidak terbatas. Oleh karena itu, untuk mengoptimalkan pemrosesan data, strategi penggunaan dari ketiganya sangat penting, dengan orientasi untuk selalu memaksimalkan jumlah Thread di dalamnya.
 						</p>
 					</header>
 					<footer>
