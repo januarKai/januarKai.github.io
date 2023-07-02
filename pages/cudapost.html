@@ -147,20 +147,16 @@
 						</p>
 						<div  class="left-align">
 							<div class="notebook-container">
-								<div class="notebook-cells">
-									<p><b>1D Grid 1D Block</b></p>
-								</div>
 								<div class="notebook-cells-editor">
+									<p><b>1D Grid 1D Block</b></p>
 									<p>
 										__device__ int getGlobalIdx_1D_1D() &#123; <br>
 										&nbsp;&nbsp;return blockIdx.x * blockDim.x + threadIdx.x;<br>
 										&#125;
 									</p>
 								</div>
-								<div class="notebook-cells">
-									<p><b>1D Grid 2D Block</b></p>
-								</div>
 								<div class="notebook-cells-editor">
+									<p><b>1D Grid 2D Block</b></p>
 									<p>
 										__device__ int getGlobalIdx_1D_2D() &#123; <br>
 										&nbsp;&nbsp;return blockIdx.x * blockDim.x + blockDim.y<br>
