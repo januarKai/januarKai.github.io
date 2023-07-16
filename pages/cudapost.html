@@ -195,6 +195,54 @@
 										&#125;
 									</p>
 								</div>
+								<div class="notebook-cells-editor">
+									<p><b>2D Grid 3D Block</b></p>
+									<p>
+										__device__ int getGlobalIdx_2D_3D() &#123; <br>
+										&nbsp;&nbsp;int blockId = blockId.x + blockIdx.y * gridDim.x;<br>
+										&nbsp;&nbsp;int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ (threadIdx.z * (blockDim.x + blockDim.y));<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ (threadIdx.y * blockDim.x) + threadIdx.x;<br>
+										&nbsp;&nbsp;return threadId;<br>
+										&#125;
+									</p>
+								</div>
+								<div class="notebook-cells-editor">
+									<p><b>3D Grid 1D Block</b></p>
+									<p>
+										__device__ int getGlobalIdx_3D_1D() &#123; <br>
+										&nbsp;&nbsp;int blockId = blockId.x + blockIdx.y * gridDim.x<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ gridDim.x * gridDim.y * blockIdx.z;<br>
+										&nbsp;&nbsp;int threadId = blockId * blockDim.x + threadIdx.x;<br>
+										&nbsp;&nbsp;return threadId;<br>
+										&#125;
+									</p>
+								</div>
+								<div class="notebook-cells-editor">
+									<p><b>3D Grid 2D Block</b></p>
+									<p>
+										__device__ int getGlobalIdx_3D_2D() &#123; <br>
+										&nbsp;&nbsp;int blockId = blockId.x + blockIdx.y * gridDim.x<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ gridDim.x * gridDim.y * blockIdx.z;<br>
+										&nbsp;&nbsp;int threadId = blockId * (blockDim.x * blockDim.y)<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ (threadIdx.y * blockDim.x) + threadIdx.x;<br>
+										&nbsp;&nbsp;return threadId;<br>
+										&#125;
+									</p>
+								</div>
+								<div class="notebook-cells-editor">
+									<p><b>3D Grid 3D Block</b></p>
+									<p>
+										__device__ int getGlobalIdx_3D_3D() &#123; <br>
+										&nbsp;&nbsp;int blockId = blockId.x + blockIdx.y * gridDim.x<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ gridDim.x * gridDim.y * blockIdx.z;<br>
+										&nbsp;&nbsp;int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ (threadIdx.z * (blockDim.x * blockDim.y))<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;+ (threadIdx.y * blockDim.x) + threadIdx.x<br>
+										&nbsp;&nbsp;return threadId;<br>
+										&#125;
+									</p>
+								</div>
 							</div>
 						</div>
 					</header>
