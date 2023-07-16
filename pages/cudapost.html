@@ -67,7 +67,7 @@
 			<article id="portfolio" class="wrapper style3">
 				<div class="container">
 					<header>
-						<h2>Image processing di CUDA C++ bagian 1</h2>
+						<h2>Pengolahan Citra Digital menggunakan CUDA C++ bagian 1</h2>
                         <a href="#" class="image featured"><img src="../images/cudabanner.png" alt=""/></a>
 						<p>
                             Ketika ingin melalukan pengolahan data atau sebuah instruksi yang harus dilakukan untuk banyak data sekaligus, normalnya kita harus melakukan perulangan untuk melaukannya. 
@@ -245,6 +245,18 @@
 								</div>
 							</div>
 						</div>
+						<h2><b>Contoh Pengolahan Citra dengan CPU dan CUDA C++</b></h2>
+						<p>
+							Untuk awal, biasanya contoh yang dipakai untuk melihat cara kerja CUDA C++ adalah dengan operasi vector add. Namun, kali ini mari kita langsung menggunakan gambar untuk mengonversi
+							gambar RGB ke bentuk gambar grayscale 1 channel. Operasi yang dilakukan sangat sederhana, yaitu hanya mengambil rata2 untuk setiap nilai piksel R,G, dan B dan membuatnya menjadi nilai untuk
+							piksel gambar grayscale 1 channel. Dalam contoh ini, OpenCV digunakan sebagai I/O untuk baca data gambar. Strategi pertama yang harus dilakukan adalah sebisa mungkin mengoptimalkan
+							penggunaan Threads, Blocks, dan Grid dalam CUDA. Untuk kasus ini, keseluruhan 1 gambar utuh bisa dianggap sebagai Grid yang kemudian dibagi ke dalam grid dengan pembagi 32 x blocks dan 32 y blocks.
+							Sehingga seperti tampak pada gambar di bawah, bahwa jumlah thread untuk setiap block yang digunakan adalah 1024. Perlu diketahui bahwa jumlah thread dalam satu block terbatas hanya 1024 thread.
+							Sehingga untuk menggunakan 16 x blocks dan 16 y blocks tidak bisa digunakan dan 128 x blocks dan 128 y blocks kurang optimal digunakan karena jadi memakai terlalu sedikit thread per blocks (tergantung kebutuhan).
+							<a href="#" class="image featured"><img src="../images/ThreadIndexingSample.png" alt=""/></a>
+							Ada beberapa syntax penting untuk yang sebenarnya mirip dengan syntax C atau C++. Beberapa di antaranya adalah cudaMalloc yang digunakan untuk mengalokasikan memory pada vRAM GPU. cudaMemcpy untuk melakukan copy
+							data dari RAM CPU ke vRAM GPU dan begitupun sebaliknya. Jika ada cudaMalloc, maka juga ada cudaFree untuk mengosongkan kembali memory yang telah digunakan oleh cudaMalloc.
+						</p>
 					</header>
 					<footer>
 						<p>Penasaran?</p>
