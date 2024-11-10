@@ -56,7 +56,7 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
-					<li><a href="../">Beranda</a></li>
+					<li><a href="../">Home</a></li>
 					<!-- <li><a href="#work">Profil</a></li> -->
 					<li><a href="portofolio.html">Portfolio</a></li>
 					<!-- <li><a href="#contact">Kontak</a></li> -->
@@ -67,40 +67,54 @@
 			<article id="portfolio" class="wrapper style3">
 				<div class="container">
 					<header>
-						<h2>Pengolahan Citra Digital menggunakan CUDA C++ bagian 1</h2>
+						<h2>Digital Image Processing using CUDA C++ Part 1</h2>
                         <a href="#" class="image featured"><img src="../images/cudabanner.png" alt=""/></a>
 						<p>
-                            Ketika ingin melalukan pengolahan data atau sebuah instruksi yang harus dilakukan untuk banyak data sekaligus, normalnya kita harus melakukan perulangan untuk melaukannya. 
+                            <!-- Ketika ingin melalukan pengolahan data atau sebuah instruksi yang harus dilakukan untuk banyak data sekaligus, normalnya kita harus melakukan perulangan untuk melaukannya. 
 							Akan tetapi, sebuah komputer yang memiliki processor dengan jumlah core yang lebih dari satu, bisa melakukan sebuah instruksi dengan beberapa data sekaligus seolah-olah bersamaan. 
 							Konsep ini kemudian dikenal dengan istilah concurrency. Seiring berjalannya waktu, perangkat keras untuk pengolahan data grafis mulai berkembang, yaitu GPU yang dikembangkan oleh NVIDIA. 
 							Dengan hadirnya GPU, komputer mampu melakukan pengolahan data grafis dengan lebih cepat dan powerful karena GPU memiliki banyak sekali streaming multiprocessor untuk melakukan pengolahan data sekaligus.
 							Tidak seperti CPU, setiap streaming multiprocessor dari GPU memiliki ribuan thread untuk bekerja bersamaan. Dengan dasar itu kemudian NVIDIA membuat CUDA yang merupakan Parallel Computing Platform yang memungkinkan 
-							pengembanag untuk mengakses dan mengoptimalkan penggunaan dari streaming multiprocessor tersebut yang kemudian disebut CUDA core. CUDA bukan hanya sebuah bahasa pemrograman, akan tetapi lebih daripada itu. 
+							pengembanag untuk mengakses dan mengoptimalkan penggunaan dari streaming multiprocessor tersebut yang kemudian disebut CUDA core. CUDA bukan hanya sebuah bahasa pemrograman, akan tetapi lebih daripada itu. -->
+							When we want to process data or an instruction that must be done for a lot of data at once, normally we have to repeat it to do it. However, a computer that has a processor with more than one core can perform an 
+							instruction with several data at once as if simultaneously. This concept is then known as concurrency. Over time, hardware for processing graphic data began to develop, namely the GPU developed by NVIDIA. 
+							With the presence of the GPU, computers are able to process graphic data faster and more powerfully because the GPU has a lot of streaming multiprocessors to process data at once. Unlike the CPU, each streaming 
+							multiprocessor from the GPU has thousands of threads to work together. With that basis, NVIDIA then created CUDA which is a Parallel Computing Platform that allows developers to access and optimize the use of the 
+							streaming multiprocessor which is then called the CUDA core. CUDA is not just a programming language, but more than that.
 							<a href="#" class="image featured"><img src="../images/cudastack.png" alt=""/></a>
-							Pada postingan ini akan dibahas CUDA dengan interface C++. Untuk sebagian yang sudah pernah menggunakan C++ di komputer desktop, mungkin sudah ada yang familiar dengan istilah concurrency, yaitu membuat instruksi 
+							In this post, CUDA with C++ interface will be discussed. For some who have used C++ on desktop computers, there may be those who are familiar with the term concurrency, which is creating instructions to perform several 
+							tasks or jobs at almost the same time. In C++, we can utilize the number of threads from the CPU to perform several jobs at almost the same time, while the use of CUDA can be more optimal if used to process the same 
+							instruction for many data at once.
+							<!-- Pada postingan ini akan dibahas CUDA dengan interface C++. Untuk sebagian yang sudah pernah menggunakan C++ di komputer desktop, mungkin sudah ada yang familiar dengan istilah concurrency, yaitu membuat instruksi 
 							untuk melakaukan beberapa task atau pekerjaan dalam waktu yang nyaris bersamaan. Di C++, kita bisa memanfaatkan jumlah thread dari CPU untuk melakukan beberaapa pekerjaan tersebut dalam waktu yang hampir bersamaan, 
-							Sedangkan pemanfaatan CUDA bisa lebih optimal jika digunakan untuk melakukan pengolahan suatu instruksi yang sama untuk banyak data sekaligus.
+							Sedangkan pemanfaatan CUDA bisa lebih optimal jika digunakan untuk melakukan pengolahan suatu instruksi yang sama untuk banyak data sekaligus. -->
 							<a href="#" class="image featured"><img src="../images/cpugpu.png" alt=""/></a>
-							Dengan kemampuan tersebut, GPU sangat cocok untuk digunakan melakukan pengolahan data gambar. Pada post ini, akan berfokus pada penggunaan CUDA C++ di Ubuntu berdasarkan pengalaman dari penulis.
+							With these capabilities, GPU is very suitable for use in image data processing. In this post, we will focus on the use of CUDA C++ in Ubuntu based on the author's experience. As usual, the first thing to do is to install 
+							the CUDA Toolkit according to the version of the GPU we have. The installation steps for the CUDA Toolkit itself can be found <a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html"> here </a>. 
+							After following the steps in the tutorial, we must ensure that the CUDA Toolkit is properly installed.
+							<!-- Dengan kemampuan tersebut, GPU sangat cocok untuk digunakan melakukan pengolahan data gambar. Pada post ini, akan berfokus pada penggunaan CUDA C++ di Ubuntu berdasarkan pengalaman dari penulis.
 							Seperti biasa, yang pertama perlu dilakukan adalah melakukan instalasi CUDA Toolkit sesuai dengan versi GPU yang kita miliki. Untuk langkah-langkah instalasi dari CUDA Toolkit sendiri bisa ditemukan <a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html">di sini</a>
-							Setalah menngikuti langkah-langkah di tutorial tersebut kita harus memastikan apakah CUDA Toolkit sudah benar terpasang dengan benar.
+							Setalah menngikuti langkah-langkah di tutorial tersebut kita harus memastikan apakah CUDA Toolkit sudah benar terpasang dengan benar. -->
                         </p>
 						<div  class="left-align">
 							<div class="notebook-container">
 								<div class="notebook-cells">
-									<p><b>Cek apakah proses instalasi sudah berhasil atau belum</b></p>
+									<p><b>Check whether the installation process was successful or not.</b></p>
 									<p>nvcc --version</p>
 								</div>
 								<div class="notebook-cells">
-									<p><b>Cek apakah CUDA driver sudah berhasil diisntal atau belum</b></p>
+									<p><b>Check whether the CUDA driver has been successfully installed or not.</b></p>
 									<p>nvidia-smi</p>
 								</div>
 							</div>
 						</div>
 						<p>
-							Untuk yang terbiasa menggunakan C++ di Ubuntu, akan familiar untuk menggunakan GCC/G++ sebagai compiler untuk program yang dibuat. Untuk CUDA C++ sendiri, kurang lebih mirip dengan apa yang perlu dilakukan
+							<!-- Untuk yang terbiasa menggunakan C++ di Ubuntu, akan familiar untuk menggunakan GCC/G++ sebagai compiler untuk program yang dibuat. Untuk CUDA C++ sendiri, kurang lebih mirip dengan apa yang perlu dilakukan
 							untuk C++ biasa, hanya saja untuk compiler dari CUDA C++ menggunakan NVCC sebagai compiler. Untuk format file dari CUDA C++ sendiri bisa diidentifikasi dengan format file (.cu). Untuk struktur dari program 
-							CUDA C++ bisa dilihat seperti contoh program 1 file di bawah ini (hello.cu).
+							CUDA C++ bisa dilihat seperti contoh program 1 file di bawah ini (hello.cu). -->
+							For those who are used to using C++ on Ubuntu, it will be familiar to use GCC/G++ as a compiler for the programs created. For CUDA C++ itself, it is more or less similar to what needs to be done for regular C++, 
+							except that the compiler of CUDA C++ uses NVCC as the compiler. For the file format of CUDA C++ itself, it can be identified by the file format (.cu). For the structure of the CUDA C++ program, it can be seen as 
+							an example of a 1-file program below (hello.cu).
 						</p>
 						<div  class="left-align">
 							<div class="notebook-container">
@@ -119,8 +133,10 @@
 							</div>
 						</div>
 						<p>
-							Klip program di atas merupakan contoh sederhana dari struktur program CUDA C++. Program di atas ketika runtime terbagi atas porsi CPU dan porsi GPU.
-							Untuk men-compile dan menjalankan program tersebut dilakukan dengan menggunakan command line
+							<!-- Klip program di atas merupakan contoh sederhana dari struktur program CUDA C++. Program di atas ketika runtime terbagi atas porsi CPU dan porsi GPU.
+							Untuk men-compile dan menjalankan program tersebut dilakukan dengan menggunakan command line -->
+							The program clip above is a simple example of the CUDA C++ program structure. The program above when the runtime is divided into CPU portions and GPU portions. 
+							To compile and run the program is done using the command line
 							<div  class="left-align">
 								<div class="notebook-container">
 									<div class="notebook-cells">
@@ -131,19 +147,30 @@
 							</div>
 						</p>
 						<p>
-							Pada struktur di CUDA C++, sederhananya dapat dibagi menjadi dua bagian, yaitu bagian CPU dan bagian GPU. Pada bagian GPU, adalah sebuah fungsi yang di awali dengan __global__ untuk deklarasi bahwa fungsi ini
+							<!-- Pada struktur di CUDA C++, sederhananya dapat dibagi menjadi dua bagian, yaitu bagian CPU dan bagian GPU. Pada bagian GPU, adalah sebuah fungsi yang di awali dengan __global__ untuk deklarasi bahwa fungsi ini
 							akan dieksekusi oleh CUDA atau juga biasa disebut CUDA kernel function. Sedangkan pada bagian CPU, fungsi CUDA kernel tersebut dipanggil seperti fungsi C++ biasa namun dengan anotasi khusus yaitu karakter &lt;&lt;&lt;&gt;&gt;&gt;.
-							Untuk fungsi dua angka 1 di dalam karakter khusus tersebut akan lebih lanjut dibahas di bawah. Untuk lebih jelas tentang struktur program C++, bisa memperhatikan gambar di bawah ini:
+							Untuk fungsi dua angka 1 di dalam karakter khusus tersebut akan lebih lanjut dibahas di bawah. Untuk lebih jelas tentang struktur program C++, bisa memperhatikan gambar di bawah ini: -->
+							In the structure in CUDA C++, it can be simply divided into two parts, namely the CPU part and the GPU part. In the GPU part, there is a function that begins with __global__ to declare that this function will be executed by CUDA
+							or is also commonly called the CUDA kernel function. While in the CPU part, the CUDA kernel function is called like a regular C++ function but with a special annotation, namely the character &lt;&lt;&lt;&gt;&gt;&gt;. 
+							For the function of two numbers 1 in the special character will be discussed further below. For more details about the structure of the C++ program, you can see the image below:
 							<a href="#" class="image featured"><img src="../images/CUDAprogramstructure.png" alt=""/></a>
-							Dalam sudut pandang pemrograman, bisa dibilang kalau model pemrograman CUDA ini adalah model pemrograman matriks. Hal ini mungkin didasari karena dalam pemrograman CUDA sendiri mengenal beberapa istilah untuk memodelkan alokasi memori
+							<!-- Dalam sudut pandang pemrograman, bisa dibilang kalau model pemrograman CUDA ini adalah model pemrograman matriks. Hal ini mungkin didasari karena dalam pemrograman CUDA sendiri mengenal beberapa istilah untuk memodelkan alokasi memori
 							GPU pada GPU dari NVIDIA atau dikenal dengan VRAM, yaitu Grid, Block, dan Thread. Di dalam sebuah Grid dibagi menjadi banyak Block, dan dilam Block, terdapat banyak sekali Thread. Perbedaan anatara Thread dengan Block dan Grid adalah
 							bahwa Thread dieksekusi oleh GPU hampir parallel, akan tetapi Block dan Grid menggunakan konsep concurrency. Dari sisi jumlah, banyak thread dalam sebuah block terbatas jumlahnya, yaitu 1024. Sedangkan dalam sebuah Grid, jumlah Block
 							bisa dibilang hampir tidak terbatas. Oleh karena itu, untuk mengoptimalkan pemrosesan data, strategi penggunaan dari ketiganya sangat penting, dengan orientasi untuk selalu memaksimalkan jumlah Thread di dalamnya. Berukut merupakan ilustrasi
-							dari penggunaan dari thread, block, dan grid pada CUDA C++.
+							dari penggunaan dari thread, block, dan grid pada CUDA C++. -->
+							From a programming perspective, it can be said that the CUDA programming model is a matrix programming model. This may be based on the fact that in CUDA programming itself, there are several terms for modeling GPU 
+							memory allocation on NVIDIA GPUs or known as VRAM, namely Grid, Block, and Thread. In a Grid, it is divided into many Blocks, and in a Block, there are many Threads. The difference between 
+							Threads and Blocks and Grids is that Threads are executed by the GPU almost parallel, but Blocks and Grids use the concept of concurrency. In terms of quantity, the number of threads in a block is limited, namely 1024. 
+							While in a Grid, the number of Blocks can be said to be almost unlimited. Therefore, to optimize data processing, the strategy of using all three is very important, with an orientation to always maximize the number of Threads in it. 
+							The following is an illustration of the use of threads, blocks, and grids in CUDA C++.
 							<a href="#" class="image featured"><img src="../images/threadIndexing.png" alt=""/></a>
-							Pada gambar di atas, pada kotak berwarna merah muda, biru, merah, dan ungu merupakan sebuah block dalam CUDA yang kemudian dari sekumpulan block tersebut disebut grid. Untuk melihat contoh thread indexing, bisa mengacu pada kotak berwarna merah muda.
+							<!-- Pada gambar di atas, pada kotak berwarna merah muda, biru, merah, dan ungu merupakan sebuah block dalam CUDA yang kemudian dari sekumpulan block tersebut disebut grid. Untuk melihat contoh thread indexing, bisa mengacu pada kotak berwarna merah muda.
 							Kemudian, dari ilustrasi tersebut, dapat dibuat rumusan atau pola untuk membuat indexing terhadap data yang akan diproses oleh CUDA nantinya. Di sini saya coba memberi contoh beberapa pola yang kemungkinan bisa digunakan dalam pengolahan data gambar
-							menggunakan CUDA C++ ini.
+							menggunakan CUDA C++ ini. -->
+							In the image above, the pink, blue, red, and purple boxes are a block in CUDA which is then called a grid from a collection of blocks. To see an example of thread indexing, you can refer to the pink box. 
+							Then, from the illustration, a formula or pattern can be made to create indexing for data that will be processed by CUDA later. Here I try to give examples of several patterns that can possibly be used 
+							in image data processing using CUDA C++.
 						</p>
 						<div  class="left-align">
 							<div class="notebook-container">
@@ -245,23 +272,31 @@
 								</div>
 							</div>
 						</div>
-						<h2><b>Contoh Pengolahan Citra dengan CPU dan CUDA C++</b></h2>
+						<!-- <h2><b>Contoh Pengolahan Citra dengan CPU dan CUDA C++</b></h2> -->
+						<h2><b>Example of Digital Image Processing using CPU and CUDA C++</b></h2>
 						<p>
-							Untuk awal, biasanya contoh yang dipakai untuk melihat cara kerja CUDA C++ adalah dengan operasi vector add. Namun, kali ini mari kita langsung menggunakan gambar untuk mengonversi
+							<!-- Untuk awal, biasanya contoh yang dipakai untuk melihat cara kerja CUDA C++ adalah dengan operasi vector add. Namun, kali ini mari kita langsung menggunakan gambar untuk mengonversi
 							gambar RGB ke bentuk gambar grayscale 1 channel. Operasi yang dilakukan sangat sederhana, yaitu hanya mengambil rata2 untuk setiap nilai piksel R,G, dan B dan membuatnya menjadi nilai untuk
 							piksel gambar grayscale 1 channel. Dalam contoh ini, OpenCV digunakan sebagai I/O untuk baca data gambar. Strategi pertama yang harus dilakukan adalah sebisa mungkin mengoptimalkan
 							penggunaan Threads, Blocks, dan Grid dalam CUDA. Untuk kasus ini, keseluruhan 1 gambar utuh bisa dianggap sebagai Grid yang kemudian dibagi ke dalam grid dengan pembagi 32 x blocks dan 32 y blocks.
 							Sehingga seperti tampak pada gambar di bawah, bahwa jumlah thread untuk setiap block yang digunakan adalah 1024. Perlu diketahui bahwa jumlah thread dalam satu block terbatas hanya 1024 thread.
-							Sehingga untuk menggunakan 16 x blocks dan 16 y blocks tidak bisa digunakan dan 128 x blocks dan 128 y blocks kurang optimal digunakan karena jadi memakai terlalu sedikit thread per blocks (tergantung kebutuhan).
+							Sehingga untuk menggunakan 16 x blocks dan 16 y blocks tidak bisa digunakan dan 128 x blocks dan 128 y blocks kurang optimal digunakan karena jadi memakai terlalu sedikit thread per blocks (tergantung kebutuhan). -->
+							For starters, the example usually used to see how CUDA C++ works is with the vector add operation. However, this time let's use an image directly to convert an RGB image to a 1-channel grayscale image. 
+							The operation performed is very simple, namely only taking the average for each pixel value of R, G, and B and making it a value for a 1-channel grayscale image pixel. In this example, OpenCV is used as 
+							I/O to read image data. The first strategy that must be done is to optimize the use of Threads, Blocks, and Grids in CUDA as much as possible. For this case, the entire 1 whole image can be considered as 
+							a Grid which is then divided into a grid with a divider of 32 x blocks and 32 y blocks. So as seen in the image below, the number of threads for each block used is 1024. Please note that the number of 
+							threads in one block is limited to only 1024 threads. So using 16 x blocks and 16 y blocks cannot be used and 128 x blocks and 128 y blocks are less than optimal because they use too few threads per block (depending on needs).
 							<a href="#" class="image featured"><img src="../images/ThreadIndexingSample.png" alt=""/></a>
-							Ada beberapa syntax penting untuk yang sebenarnya mirip dengan syntax C atau C++. Beberapa di antaranya adalah cudaMalloc yang digunakan untuk mengalokasikan memory pada vRAM GPU. cudaMemcpy untuk melakukan copy
+							<!-- Ada beberapa syntax penting untuk yang sebenarnya mirip dengan syntax C atau C++. Beberapa di antaranya adalah cudaMalloc yang digunakan untuk mengalokasikan memory pada vRAM GPU. cudaMemcpy untuk melakukan copy
 							data dari RAM CPU ke vRAM GPU dan begitupun sebaliknya. Jika ada cudaMalloc, maka juga ada cudaFree untuk mengosongkan kembali memory yang telah digunakan oleh cudaMalloc. Untuk melihat bagaimana proses
-							bagaimana cara melakukan pengolahan citra digital menggunakan CUDA C++ bisa langsung klik link berikut ini <a href="https://github.com/januarkai/Image-Processing-CUDA">Contoh CUDA C++ dan OpenCV</a>
+							bagaimana cara melakukan pengolahan citra digital menggunakan CUDA C++ bisa langsung klik link berikut ini <a href="https://github.com/januarkai/Image-Processing-CUDA">Contoh CUDA C++ dan OpenCV</a> -->
+							There are some important syntaxes that are actually similar to C or C++ syntax. Some of them are cudaMalloc which is used to allocate memory on the GPU vRAM. cudaMemcpy to copy data from CPU RAM to GPU vRAM and vice versa. 
+							If there is cudaMalloc, then there is also cudaFree to free up memory that has been used by cudaMalloc. To see how the process of how to process digital images using CUDA C++ can directly click the following link <a href="https://github.com/januarkai/Image-Processing-CUDA">Example of CUDA C++ and OpenCV</a>
 						</p>
 						<div  class="left-align">
 							<div class="notebook-container">
 								<div class="notebook-cells">
-									<p><b>Referensi</b></p>
+									<p><b>Reference</b></p>
 									<p>https://blogs.nvidia.com/blog/2012/09/10/what-is-cuda-2/</p>
 									<p>https://cs.calvin.edu/courses/cs/374/CUDA/CUDA-Thread-Indexing-Cheatsheet.pdf</p>
 								</div>
@@ -270,7 +305,7 @@
 					</header>
 					<footer>
 						
-						<a href="https://github.com/januarkai/Image-Processing-CUDA" class="button large scrolly">Klik di sini</a>
+						<a href="https://github.com/januarkai/Image-Processing-CUDA" class="button large scrolly">Click Here</a>
 					</footer>
 				</div>
 			</article>
@@ -279,14 +314,14 @@
 			<article id="contact" class="wrapper style4">
 				<div class="container medium">
 					<header>
-						<h2>Terhubung dengan saya</h2>
-						<p>Jika ada yang ingin ditanyakan, silakan hubungi saya dengan beberapa media sosial di bawah.</p>
+						<h2>Reaching out to me</h2>
+						<p>If you have any questions, please feel free to contact me through the social media links below.</p>
 					</header>
 					<div class="row">
 
 						<div class="col-12">
 							<hr />
-							<h3>Di sini ...</h3>
+							<h3>Right Here ...</h3>
 							<ul class="social">
 								<li><a href="https://twitter.com/januarKai" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 								<li><a href="https://www.facebook.com/januar.arsenal" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
